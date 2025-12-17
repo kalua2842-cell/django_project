@@ -1,0 +1,116 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Image Compressor</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .a1 {
+      background-color: white;
+      align-content: center;
+      margin-left: 20px;
+      margin-top: 10px;
+    }
+
+    .a2 {
+      margin-left: 20px;
+      margin-top: 20px;
+      /* background-color: rgb(240, 6, 45);  */
+    }
+
+    .mb-3 {
+      margin-top: 20px;
+    }
+
+    .card {
+      width: 550px;
+      height: 400px;
+      margin-left: 250px;
+    }
+
+    #su {
+      margin-left: 250px;
+    }
+  </style>
+</head>
+
+<body class="a1">
+
+  <div class="container py-5">
+    <nav class="navbar bg-body-tertiary">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="{% static 'images/11.png' %}" alt="OMNITREX" width="150" height="54" style="color: red;">
+        </a>
+      </div>
+    </nav>
+    <h1 class="mb-4" style="color: teal;text-align: center;">Lossless Image Compressor & Format Converter</h1>
+    <div class="card p-4 mb-3" style="background-color: rgb(193, 243, 140);">
+      <form method="post" enctype="multipart/form-data" class="a2">
+        {% csrf_token %}
+        <br> <br>
+        <div class="mb-3">{{ form.image.label_tag }} &nbsp&nbsp {{ form.image }}</div>
+        <div class="mb-3">{{ form.target_format.label_tag }}&nbsp&nbsp{{ form.target_format }}</div>
+        <div class="mb-3">{{ form.compress_level.label_tag }}&nbsp&nbsp{{ form.compress_level }}</div>
+        <div class="form-check mb-3">{{ form.webp_lossless }}&nbsp&nbsp {{ form.webp_lossless.label_tag }}</div>
+        <div class="mb-3">{{ form.jpeg_quality.label_tag }}&nbsp&nbsp{{ form.jpeg_quality }}</div>
+        <button class="btn btn-primary">Upload & Process</button>
+      </form>
+    </div>
+    <small class="text-muted" id="su">Tips: PNG and WebP (lossless mode) are lossless. JPEG is lossy.</small>
+    <br> <br><br>
+    <h3>Image Compression</h3>
+    <p>In terms of digital files, compression is the act of encoding information using fewer bits than what’s found in
+      the original file. Simply put, it means converting a large file into a smaller file.</p>
+    <p>There are two types of compression: lossless and lossy. Lossless compression is when the compression tool removes
+      empty, needless, or duplicated bits from the original file. This results in a smaller file that has the exact same
+      quality as the original. Lossy compression is when the compressor removes excessive or unimportant bits from the
+      original file. This results in a smaller file but with a reduced quality. With lossy compression, how small you
+      want the final file to be will depend on how much loss of quality you’re comfortable with.</p>
+
+    <h4>Why would you want to compress images?</h4>
+    <p>Depending on the source of an image, the file could be quite large. A JPG from a professional DSLR camera, for
+      example, could be dozens of megabytes. Depending on your needs, this could be too big. Compressing this image
+      would be very useful. <br>
+
+      Likewise, you might have large images on your phone. These images could be taking up a lot of hard drive space and
+      preventing you from taking more photos. Compressing them could free up more internal storage, fixing this problem.
+    </p>
+    <h4>How does the image compressor work?</h4>
+    <p>Our tool uses lossy compression to shrink down image files. It supports three file types: PNG, JPG/JPEG, and GIF.
+      This system intelligently analyzes uploaded images and reduces them to the smallest possible file size without
+      negatively affecting the overall quality.</p>
+    <p>To begin, you’ll need to upload some images you’d like to compress. You can upload up to 20 images at once and
+      you can feel free to mix and match file types. In other words, you don’t need to only upload JPGs and wait to
+      upload PNGs. Our server can automatically parse out the files for you.</p>
+    <p>First, hit the “Upload Files” button and navigate to your images. Once uploaded, you’ll see thumbnails for all
+      your images arriving in the queue. You’ll be able to see their real-time progress as our server analyzes them.</p>
+    <p>As stated, our server will determine the ideal compression rate to reduce the file size while not reducing
+      quality too much. However, if you want more or less compression, you can control it. Tap the thumbnail of the
+      image you’d like to tweak. Now, move the quality slider up or down until you settle on a file size/quality setting
+      you think is just right. When you’re finished, hit the “APPLY” button and move on to repeat these steps with the
+      next image.
+
+    </p>
+    <p>When you are satisfied with the current batch, hit the “DOWNLOAD ALL” button. This will download a ZIP file with
+      all your compressed images. If you don’t need all of them, you can hit the “DOWNLOAD” button under each thumbnail
+      instead to grab each one individually.</p>
+    <p>Ready for another batch? Hit the “CLEAR QUEUE” button and start again. You can use this tool as many times as
+      needed without cost.</p>
+    <h4>Is it safe to compress images?</h4>
+    <p>There is no need to be worried about the safety of our free service. Your original files will stay untouched on
+      your system, so if you are unhappy with your compressed files, you can simply try again. Also, our unmanned system
+      purges all data after one hour, so you don’t need to worry about the security of your data.</p>
+    <br><br><br>
+    <center>All uploaded data is deleted after 1 hour.</center>
+
+
+
+
+  </div>
+</body>
+
+</html>

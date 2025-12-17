@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Result</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    #a1{
+      background-color: rgb(37, 214, 214);
+      margin-left: 20px;
+    }
+    #a3
+    {
+      text-align: center;
+    }      
+    #ap
+    {
+      /* background-color: aquamarine; */
+      margin-left: 300px;
+    }
+    .card {
+      width: 500px;  
+      height: 650px;
+    }
+  </style>
+</head>
+<body id="a1">
+<div class="container py-5">
+  <h1 class="mb-4" id="a3" style="color: rgb(227, 19, 19) ; font-size: 60px;">Processed Image</h1>
+  <div class="card p-4 mb-3" id="ap">
+    <center><p><strong>Original filename:</strong> {{ orig_name }}</p>
+    <p><strong>Original format:</strong> {{ orig_format }}</p>
+    <p><strong>Output format:</strong> {{ out_format }}</p>
+    <p><strong>Output size (bytes):</strong> {{ out_size }}</p></center>
+    <img src="{{ result_url }}" alt="result" class="img-fluid mb-3" style="max-height:400px;"> <br> <br>
+    <a href="{{ result_url }}" download="{{ result_filename }}" class="btn btn-success"> Download</a>&nbsp &nbsp &nbsp &nbsp &nbsp 
+    <a href="{% url 'upload' %}" class="btn btn-danger">Process another</a>
+  </div>
+</div>
+</body>
+</html>
